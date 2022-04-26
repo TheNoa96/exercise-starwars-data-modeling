@@ -16,8 +16,8 @@ class User(Base):
     username = Column(String(250))
     password = Column(String(250))
 
-class People(Base):
-    __tablename__ = 'people'
+class Character(Base):
+    __tablename__ = 'character'
     id = Column(Integer, primary_key=True)
     name = Column(String(100))
     mass = Column(Integer)
@@ -43,6 +43,21 @@ class Planets(Base):
     terrain = Column(String(100))
     surface_water = Column(Integer)
     population = Column(Integer)
+
+class Starships(Base):
+    __tablename__ = 'starships'
+    id = Column(Integer, primary_key=True)
+    name = Column(String(250), nullable=False)
+    model = Column(String(250), nullable=False)
+    length = Column(Integer, nullable=False)
+    crew = Column(Integer, nullable=False)
+    passengers = Column(Integer, nullable=False)
+    manufacturer = Column(String(250), nullable=False)
+    max_atmosphering_speed = Column(Integer, nullable=False)
+    cargo_capacity = Column(Integer, nullable=False)
+    consumables = Column(String(250), nullable=False)
+    cost_in_credits = Column(Integer, nullable=False)
+    user_id = Column(Integer, ForeignKey('user.id'), primary_key=True)
 
 class Favorite(Base):
     __tablename__ = 'favorite'
